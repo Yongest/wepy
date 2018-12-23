@@ -1,0 +1,15 @@
+{
+	"description": "在当前目录初始一个项目。",
+	"setting": {
+		"urlCheck": true,
+		"es6": false,
+		"postcss": false,
+		"minified": false,
+		"newFeature": true
+	},
+	"compileType": "miniprogram",
+	"appid": "touristappid",
+	"projectname": "wepy",
+	"miniprogramRoot": "./dist",
+	"condition": {}
+}

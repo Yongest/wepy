@@ -1,0 +1,20 @@
+<style lang="less">
+</style>
+<template>
+  <view class="container">
+    Hello world
+  </view>
+</template>
+
+<script>
+  import wepy from 'wepy'
+
+  export default class Index extends wepy.page {
+    config = {
+      navigationBarTitleText: 'wepy明一小程序'
+    }
+    onLoad() {
+      console.log('onLoad')
+    }
+  }
+</script>

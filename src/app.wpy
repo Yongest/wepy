@@ -1,0 +1,45 @@
+<style lang="less">
+</style>
+
+<script>
+import wepy from 'wepy'
+import 'wepy-async-function'
+export default class extends wepy.app {
+  // promise 配置
+  constructor () {
+        super();
+        this.use('promisify');
+    }
+
+  config = {
+    pages: [
+      'pages/index'
+    ],
+    window: {
+      backgroundTextStyle: 'light',
+      navigationBarBackgroundColor: '#fff',
+      navigationBarTitleText: 'WeChat',
+      navigationBarTextStyle: 'black'
+    }
+  }
+
+  onLaunch() {
+    // console.log('on launch')
+    
+    let mypro = new Promise((resolve,reject)=>{
+      setTimeout(()=>{
+        resolve(2222)
+      },3000)
+    })
+
+    mypro.then(r=>{
+      console.log(r,'promise测试成功')
+    })
+  }
+
+// 超全局对象，在任何地方都可以使用。
+  globalData={
+
+  }
+}
+</script>

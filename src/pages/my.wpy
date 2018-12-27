@@ -1,0 +1,36 @@
+<style lang="less">
+</style>
+<template>
+  <view class="container">
+    <view @tap='changeMsg'>Hello world ,{{msg}}</view>
+    <!-- 动态传值，单向绑定 -->
+    <head :msg='msg'></head>
+    <head :msg.sync='msg'></head>
+
+     <!-- 动态传值，双向绑定 -->
+  </view>
+</template>
+
+<script>
+  import wepy from 'wepy'
+  import head from '../components/head'
+  export default class My extends wepy.page {
+    config = {
+      navigationBarTitleText: '数据双向绑定'
+    }
+    data={
+      msg:'我是父组件里面的数据'
+    }
+    methods={
+      changeMsg(){
+        this.msg = '我的值改变了哦！'
+      }
+    }
+    onLoad() {
+      // console.log('onLoad')
+    }
+    components={
+      head
+    }
+  }
+</script>

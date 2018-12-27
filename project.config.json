@@ -10,6 +10,6 @@
 	"compileType": "miniprogram",
 	"appid": "touristappid",
 	"projectname": "wepy",
-	"miniprogramRoot": "./dist",
+	"miniprogramRoot": "dist/",
 	"condition": {}
 }

@@ -1,0 +1,35 @@
+<style lang="less">
+</style>
+<template>
+  <view class="container">
+    需求：此页面广播一个事件say,两个组件猫与狗相应相关的事件
+  <view @tap='myTap'> clickme</view>
+    <Cat></Cat>
+     <Dog></Dog> 
+  </view>
+</template>
+
+<script>
+  import wepy from 'wepy'
+  import Cat from '../components/Cat'
+  import Dog from '../components/Dog'
+  export default class Broadcast extends wepy.page {
+    config = {
+      navigationBarTitleText: '广播分发'
+    }
+    
+    methods={
+      myTap(){
+        // this.$broadcast('子组件的事件名',...参数对象)
+        this.$broadcast('say',null)
+      }
+    }
+    onLoad() {
+      // console.log('onLoad')
+    }
+    components={
+      Cat,
+      Dog
+    }
+  }
+</script>

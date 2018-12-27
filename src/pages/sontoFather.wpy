@@ -1,0 +1,37 @@
+<style lang="less">
+</style>
+<template>
+  <view class="container">
+    需求：引入两个组件 sonA sonB
+    sonA 触发事件，带上参数 到 sontoFather
+    sonB 触发事件，带上参数 到 sontoFather
+  <view @tap='myTap'> clickme</view>
+    <Cat></Cat>
+     <Dog></Dog> 
+  </view>
+</template>
+
+<script>
+  import wepy from 'wepy'
+  import sonA from '../components/sonA'
+  import sonB from '../components/sonB'
+  export default class SontoFather extends wepy.page {
+    config = {
+      navigationBarTitleText: '子组件向父组件传值'
+    }
+    
+    methods={
+      myTap(){
+        // this.$broadcast('子组件的事件名',...参数对象)
+        this.$broadcast('say',null)
+      }
+    }
+    onLoad() {
+      // console.log('onLoad')
+    }
+    components={
+      sonA,
+      sonB
+    }
+  }
+</script>

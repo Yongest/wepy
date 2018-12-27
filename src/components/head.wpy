@@ -1,0 +1,33 @@
+<style>
+    .myhead {
+        background: pink;
+    }
+</style>
+<template>
+    <view @tap='sonTap' class="myhead">
+{{msg}}
+    </view>
+</template>
+<script>
+
+import wepy from 'wepy'
+export default class Head extends wepy.component {
+    data = {
+        name:'我是头部'
+    }
+    props= {
+        msg:{
+            twoWay:true,
+            type:String
+        }
+    }
+    methods={
+        sonTap(){
+            this.msg = '子组件改变的数据'
+        }
+    }
+}
+</script>
+
+
+

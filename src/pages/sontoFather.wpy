@@ -5,10 +5,12 @@
     需求：引入两个组件 sonA sonB
     sonA 触发事件，带上参数 到 sontoFather
     sonB 触发事件，带上参数 到 sontoFather
-  <view @tap='myTap'> clickme</view>
-    <Cat></Cat>
-     <Dog></Dog> 
+
+  <view> {{msg}}</view>
+     <sonA></sonA>
+     <sonB></sonB> 
   </view>
+ 
 </template>
 
 <script>
@@ -19,11 +21,12 @@
     config = {
       navigationBarTitleText: '子组件向父组件传值'
     }
-    
-    methods={
-      myTap(){
-        // this.$broadcast('子组件的事件名',...参数对象)
-        this.$broadcast('say',null)
+    data = {
+      msg:'空'
+    }
+    events={
+      sayHey(data){
+        this.msg = data +'呼唤我了！'
       }
     }
     onLoad() {

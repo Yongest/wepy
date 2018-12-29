@@ -1,0 +1,32 @@
+<style lang="less">
+</style>
+<template>
+  <view class="container">
+    需求：A组件控制B组件里面的方法。
+
+
+  
+     <A></A>
+     <B></B> 
+  </view>
+ 
+</template>
+
+<script>
+  import wepy from 'wepy'
+  import A from '../components/A'
+  import B from '../components/B'
+  export default class AcontrolB extends wepy.page {
+    config = {
+      navigationBarTitleText: 'A组件控制B组件里面的方法'
+    }
+  
+    onLoad() {
+      // console.log('onLoad')
+    }
+    components={
+      A,
+      B
+    }
+  }
+</script>

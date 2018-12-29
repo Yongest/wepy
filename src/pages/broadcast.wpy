@@ -1,11 +1,31 @@
 <style lang="less">
+textarea {
+  border: 1px solid #000;
+}
 </style>
 <template>
   <view class="container">
+    <view class="section">
+  <view class="section__title">省市区选择器</view>
+  <picker
+    mode="region"
+    bindchange="bindRegionChange"
+    value="{{region}}"
+    
+  >
+    <view class="picker">
+      当前选择：{{region[0]}}，{{region[1]}}，{{region[2]}}
+    </view>
+  </picker>
+</view> 
+    
     需求：此页面广播一个事件say,两个组件猫与狗相应相关的事件
   <view @tap='myTap'> clickme</view>
     <Cat></Cat>
      <Dog></Dog> 
+       <view>
+        it amet consectetur adipisicing elit. Amet, totam magnam impedit distinctio nam, illum nostrum quos vero, veritatis atque itaque qui sequi deserunt tenetur facere placeat vel laudantium. Sint.
+  </view>
   </view>
 </template>
 
@@ -17,7 +37,10 @@
     config = {
       navigationBarTitleText: '广播分发'
     }
-    
+    data= {
+      region: ['广东省', '广州市', '番禺区'],
+    customItem: '全部'
+    }
     methods={
       myTap(){
         // this.$broadcast('子组件的事件名',...参数对象)

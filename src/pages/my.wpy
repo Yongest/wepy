@@ -5,9 +5,10 @@
     <view @tap='changeMsg'>Hello world ,{{msg}}</view>
     <!-- 动态传值，单向绑定 -->
     <head :msg='msg'></head>
-    <head :msg.sync='msg'></head>
 
      <!-- 动态传值，双向绑定 -->
+    <head :msg.sync='msg'></head>
+
   </view>
 </template>
 

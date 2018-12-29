@@ -1,0 +1,31 @@
+<style>
+    .myhead {
+        background: yellowgreen;
+    }
+</style>
+<template>
+   <view class="myhead" >
+        B组件：{{msg}}
+    </view>
+</template>
+<script>
+
+import wepy from 'wepy'
+
+export default class B extends wepy.component {
+    data = {
+        msg:'可以触发我的方法，但暂无法给我赋值'
+    }
+    methods={
+        sayHey(datas){
+            console.log(datas)
+            console.log(this)
+            this.msg =  datas
+        }
+    }
+    
+}
+</script>
+
+
+

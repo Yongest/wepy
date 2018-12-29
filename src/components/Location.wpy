@@ -1,0 +1,17 @@
+<template>
+    <view class="location">
+    <view>{{city}}</view>
+    </view>
+</template>
+<script>
+import wepy from 'wepy'
+export default class Location extends wepy.component {
+    props={
+        city:String
+    }
+}
+</script>
+<style>
+
+</style>
+

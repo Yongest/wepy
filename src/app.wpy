@@ -1,21 +1,42 @@
-<style lang="less">
-</style>
+<style src='./style/iconfont.wxss'></style>
+<style src='./style/iconfont2.wxss'></style>
 
 <script>
 import wepy from 'wepy'
 import 'wepy-async-function'
+import './mock/mock_index_data.js'
 export default class extends wepy.app {
   // promise 配置
   constructor () {
         super();
         this.use('promisify');
+
+        // 开启ajax全局拦截器
+        this.intercept('request',{
+          config(obj){
+            return obj;
+          },
+          success(ret){
+            return ret
+          },
+          fail(fail){
+            return fail
+          },
+          complete(ret){
+            return ret
+          }
+        })
     }
 
   config = {
     pages: [
+      'pages/index',
+      'pages/intercept',
+      'pages/AcontrolB',
+      'pages/sontoFather',
       'pages/broadcast',
       'pages/my',
-      'pages/index'
+      
     ],
     window: {
       backgroundTextStyle: 'light',

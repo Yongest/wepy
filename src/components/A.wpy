@@ -1,0 +1,29 @@
+<style>
+    .myhead {
+        background: yellowgreen;
+    }
+</style>
+<template>
+   <view class="myhead" @tap='controlB'>
+        A组件
+    </view>
+</template>
+<script>
+
+import wepy from 'wepy'
+import B from './B'
+export default class A extends wepy.component {
+    
+    methods={
+        controlB(){
+            this.$invoke('B','sayHey','我是A组件里面的值')
+        }
+    }
+    components = {
+        B
+    }
+}
+</script>
+
+
+

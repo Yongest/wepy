@@ -4,22 +4,20 @@
     }
 </style>
 <template>
-   <view class="myhead">
-        {{msg}}
+   <view class="myhead" @tap='sonA'>
+        A儿子
     </view>
 </template>
 <script>
 
 import wepy from 'wepy'
-export default class Cat extends wepy.component {
+export default class SonA extends wepy.component {
     data = {
         msg:''
     }
-//    events对象，存放的是组件事件相关的代码
-    events = {
-        say(){
-            console.log('猫叫啦')
-            this.msg = '猫叫'
+    methods={
+        sonA(){
+            this.$emit('sayHey','a儿子')
         }
     }
 }

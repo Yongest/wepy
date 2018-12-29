@@ -1,0 +1,32 @@
+<style lang="less">
+</style>
+<template>
+  <view class="container">
+    
+  </view>
+</template>
+
+<script>
+  import wepy from 'wepy'
+
+  export default class My extends wepy.page {
+    config = {
+      navigationBarTitleText: '拦截器使用'
+    }
+   
+    methods={
+      
+    }
+    onLoad() {
+      wepy.request({
+        url:"http://api.apiopen.top/searchAuthors",
+        data:{
+          name:'李白'
+        }
+      }).then(data=>{
+        console.log(data)
+      })
+    }
+    
+  }
+</script>

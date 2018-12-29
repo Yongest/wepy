@@ -2,19 +2,73 @@
 </style>
 <template>
   <view class="container">
-    Hello world
+    <Location :city.sync="city"></Location>
+    <Mtswiper :swiperArr.sync='swiperArr'></Mtswiper>  
   </view>
 </template>
 
 <script>
-  import wepy from 'wepy'
-
-  export default class Index extends wepy.page {
-    config = {
-      navigationBarTitleText: 'wepy明一小程序'
-    }
-    onLoad() {
-      console.log('onLoad')
-    }
+import wepy from 'wepy';
+import Location from '../components/Location';
+import Mtswiper from '../components/Mtswiper';
+// 引入SDK核心类
+import QQMapWX from '../qqmap-wx-jssdk1.0/qqmap-wx-jssdk.min.js';
+// 实例化API核心类
+let demo = new QQMapWX({
+  key: 'FQLBZ-474AU-DGTVG-2DOZU-STEE3-JQFL4' // 必填
+});
+export default class Index extends wepy.page {
+  config = {
+    navigationBarTitleText: 'wepy明一小程序'
+  };
+  data = {
+    city: '定位中',
+    swiperArr:[]
+  };
+  onLoad() {
+    console.log('onLoad');
+    this.getLocation();
+    this.getSwiper()
   }
+  // 获取地理位置
+  async getLocation() {
+    let point = await wepy.getLocation();
+    // 城市名称,在异步中修改了数据
+    this.city = (await this.reverseGeocoder({latitude: point.latitude,longitude: point.longitude})).result.address_component.city
+    console.log(this.city);
+    this.$apply();
+  }
+// 将经纬度转换成地址
+  reverseGeocoder(point) {
+    return new Promise((resolve, reject) => {
+      demo.reverseGeocoder({
+        location: {
+          latitude: point.latitude,
+          longitude: point.longitude
+        },
+        success: function(res) {
+          // console.log(res);
+          resolve(res)
+        },
+        fail: function(res) {
+          console.log(res);
+        },
+        complete: function(res) {
+          console.log(res);
+        }
+      });
+    });
+  }
+  // 获取轮播图
+  async getSwiper(){
+    this.swiperArr = (await wepy.request({
+      url:'http://api.meituan.com/index/swiper'
+    })).data;
+    console.log(this.swiperArr)
+  }
+  components = {
+    Location,
+    Mtswiper
+  };
+}
 </script>
